@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ECOLOG_Mobile_App.Views.DataInsertionPage">
+
+    <StackLayout VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Vertical">
+        <Button Text="Insert Altitude Data" />
+
+        <Button Text="Insert GraphData" />
+
+        <Button Text="Insert Efficiency Data" />
+
+        <Button Text="Insert EfficiencyMax Data" />
+
+        <Button Text="Insert Semantic Link Current Data" />
+
+    </StackLayout>  
+</ContentPage>

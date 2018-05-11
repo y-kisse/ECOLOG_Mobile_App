@@ -31,6 +31,7 @@ namespace ECOLOG_Mobile_App
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
+            containerRegistry.RegisterForNavigation<DataInsertionPage>();
         }
     }
 }
