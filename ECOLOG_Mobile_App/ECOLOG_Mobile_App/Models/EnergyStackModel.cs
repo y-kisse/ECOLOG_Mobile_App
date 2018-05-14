@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Realms;
 using ECOLOG_Mobile_App.Utils;
+using System.Linq;
 
 namespace ECOLOG_Mobile_App.Models
 {
