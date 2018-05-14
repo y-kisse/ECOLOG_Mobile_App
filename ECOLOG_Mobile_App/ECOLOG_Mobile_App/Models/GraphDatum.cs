@@ -6,7 +6,7 @@ using Realms;
 namespace ECOLOG_Mobile_App.Models
 {
     // From TOD2017MobileApp
-    class GraphDatum: RealmObject
+    public class GraphDatum: RealmObject
     {
         public int SemanticLinkId { get; set; }
         public int TripId { get; set; }
