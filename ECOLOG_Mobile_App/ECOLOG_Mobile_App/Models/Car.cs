@@ -6,7 +6,7 @@ using ECOLOG_Mobile_App.Calculators.Components;
 namespace ECOLOG_Mobile_App.Models
 {
     // From TOD2017MobileApp
-    class Car
+    public class Car
     {
         public int CarId { get; set; }
         public string Model { get; set; }
