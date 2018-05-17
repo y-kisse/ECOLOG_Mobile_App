@@ -5,6 +5,9 @@ using ECOLOG_Mobile_App.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Prism.Unity;
+using Plugin.Geolocator.Abstractions;
+using System;
+using System.Collections.Generic;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ECOLOG_Mobile_App
@@ -20,6 +23,10 @@ namespace ECOLOG_Mobile_App
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
 
+        public string AppStatus;
+        public static IList<IDisposable> EventList = new List<IDisposable>();
+        public static Position CurrentPosition;
+
         protected override async void OnInitialized()
         {
             InitializeComponent();
@@ -32,6 +39,7 @@ namespace ECOLOG_Mobile_App
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<DataInsertionPage>();
+            containerRegistry.RegisterForNavigation<EnergyStackPage>();
         }
     }
 }

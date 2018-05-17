@@ -8,7 +8,7 @@ using System.Linq;
 namespace ECOLOG_Mobile_App.Models
 {
     // From 2017MobileApp
-    class ChoraleModel
+    public class ChoraleModel
     {
         public int ClassNumber { get; set; }
         public float MinLostEnegry { get; set; }

@@ -9,6 +9,7 @@
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <Label Text="Welcome to Xamarin Forms and Prism!" />
         <Button Text="Navi to DataInsertionPage" Command="{Binding NaviToDataInsertionPageCom}"/>
+        <Button Text="Navi to EnergyStackPage" Command="{Binding NaviToEnergyStackPageCom}"/>
     </StackLayout>
 
 </ContentPage>

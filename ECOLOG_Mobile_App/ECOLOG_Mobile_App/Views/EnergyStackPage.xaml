@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:forms="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ECOLOG_Mobile_App.Views.EnergyStackPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="#2196F3" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <forms:PlotView Grid.Column="0"
+                        Model="{Binding PlotModelChorale.Value}" />
+
+        <forms:PlotView Grid.Column="1"
+                        Model="{Binding PlotModelEnergyStack.Value}" />
+
+        <Button Grid.Column="2"
+                Text="＋"
+				Font="Bold"
+				FontSize="28"
+                VerticalOptions="FillAndExpand"
+				Style="{StaticResource ButtonStyle}"
+                Command="{Binding PlusCommand}" />
+
+    </Grid>
+</ContentPage>
