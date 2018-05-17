@@ -10,6 +10,7 @@
         <Label Text="Welcome to Xamarin Forms and Prism!" />
         <Button Text="Navi to DataInsertionPage" Command="{Binding NaviToDataInsertionPageCom}"/>
         <Button Text="Navi to EnergyStackPage" Command="{Binding NaviToEnergyStackPageCom}"/>
+        <Button Text="Navi to ECGsPage" Command="{Binding NaviToECGsPageCom}"/>
     </StackLayout>
 
 </ContentPage>

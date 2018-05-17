@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:forms="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+             xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ECOLOG_Mobile_App.Views.ECGsPage">
+    <Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <oxy:PlotView Grid.Row="0"
+                      Grid.Column="0"
+                      Model="{Binding PlotModelConvertLoss.Value}" />
+
+            <oxy:PlotView Grid.Row="1"
+                      Grid.Column="0"
+                      Model="{Binding PlotModelAirResistance.Value}" />
+
+            <oxy:PlotView Grid.Row="0"
+                      Grid.Column="1"
+                      Model="{Binding PlotModelRollingResistance.Value}" />
+
+            <oxy:PlotView Grid.Row="1"
+                      Grid.Column="1"
+                      Model="{Binding PlotModelRegeneLoss.Value}" />
+
+        </Grid>
+
+        <Label x:Name="AtentionTextLabel"
+               Text="{Binding AtentionText.Value}"
+               TextColor="Red"
+               FontSize="48"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+
+    </Grid>
+</ContentPage>

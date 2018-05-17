@@ -23,7 +23,7 @@ namespace ECOLOG_Mobile_App
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
 
-        public string AppStatus;
+        public static string AppStatus;
         public static IList<IDisposable> EventList = new List<IDisposable>();
         public static Position CurrentPosition;
 
@@ -40,6 +40,10 @@ namespace ECOLOG_Mobile_App
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<DataInsertionPage>();
             containerRegistry.RegisterForNavigation<EnergyStackPage>();
+            containerRegistry.RegisterForNavigation<ECGsPage>();
+            containerRegistry.RegisterForNavigation<ResultPage>();
+            containerRegistry.RegisterForNavigation<MapPage>();
+            containerRegistry.RegisterForNavigation<ECGsDemoPage>();
         }
     }
 }

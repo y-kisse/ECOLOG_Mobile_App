@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             x:Class="ECOLOG_Mobile_App.Views.MapPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="#2196F3" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand"
+                 Orientation="Vertical">
+
+        <Label Text="{Binding Location.Value}"/>
+
+        <Label VerticalOptions="FillAndExpand"                    
+               HorizontalOptions="FillAndExpand"                    
+               Text="ECOLOG Mobile App"
+               FontSize="48"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"/>
+
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="End">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" 
+                    Text="DATA INSERTION"
+                    Style="{StaticResource ButtonStyle}"
+                    Command="{Binding NavigateToInsertionPageCommand}"/>
+
+            <Button Grid.Column="1"
+                    Text="ECG DEMO"
+                    Style="{StaticResource ButtonStyle}"
+                    Command="{Binding NavigateToDemoPageCommand}"/>
+
+        </Grid>
+    </StackLayout>
+</ContentPage>
