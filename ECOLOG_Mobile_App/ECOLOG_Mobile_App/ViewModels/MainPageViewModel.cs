@@ -15,6 +15,7 @@ namespace ECOLOG_Mobile_App.ViewModels
         public ICommand NaviToDataInsertionPageCom { get; }
         public ICommand NaviToEnergyStackPageCom { get; }
         public ICommand NaviToECGsPageCom { get; }
+        public ICommand NaviToResultPageCom { get; }
         public MainPageViewModel(INavigationService navigationService) 
             : base (navigationService)
         {
@@ -36,6 +37,12 @@ namespace ECOLOG_Mobile_App.ViewModels
             {
                 Console.WriteLine("move to ECGsPage");
                 _navigationService.NavigateAsync("ECGsPage");
+            });
+
+            NaviToResultPageCom = new DelegateCommand(() =>
+            {
+                Console.WriteLine("move to Result Page");
+                _navigationService.NavigateAsync("ResultPage");
             });
         }
     }
