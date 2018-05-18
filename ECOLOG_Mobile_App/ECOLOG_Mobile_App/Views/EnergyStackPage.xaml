@@ -16,19 +16,25 @@
     </ContentPage.Resources>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <forms:PlotView Grid.Column="0"
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding LastGeoStr.Value}" />
+
+        <forms:PlotView Grid.Row="1"  Grid.Column="0"
                         Model="{Binding PlotModelChorale.Value}" />
 
-        <forms:PlotView Grid.Column="1"
+        <forms:PlotView Grid.Row="1"  Grid.Column="1"
                         Model="{Binding PlotModelEnergyStack.Value}" />
 
-        <Button Grid.Column="2"
+        <Button Grid.Row="1"  Grid.Column="2"
                 Text="＋"
 				Font="Bold"
 				FontSize="28"

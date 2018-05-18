@@ -33,6 +33,7 @@ namespace ECOLOG_Mobile_App.ViewModels
         public ChoraleModel ChoraleModel { get; set; }
         public IList<EnergyStackModel> EnergyStackModelList { get; set; }
         public ECOLOGCalculator Calculator { get; set; }
+        public ReactiveProperty<string> LastGeoStr { get; set; }
 
         public ReactiveTimer Timer { get; set; }
 
@@ -64,6 +65,8 @@ namespace ECOLOG_Mobile_App.ViewModels
                 CrossGeolocator.Current.StartListeningAsync(minimumTime: TimeSpan.FromMilliseconds(1000), minimumDistance: 0, includeHeading: false);
             }
 
+            LastGeoStr = new ReactiveProperty<string>();
+
             /*** テストコード ***/
             /*var positions = TestPosition.TestPositions;
             Timer = new ReactiveTimer(TimeSpan.FromMilliseconds(200));
@@ -82,10 +85,12 @@ namespace ECOLOG_Mobile_App.ViewModels
 
         private void OnPositionChanged(object sender, PositionEventArgs e)
         {
+            LastGeoStr.Value = (string)(e.Position.Latitude + ", " + e.Position.Longitude);
+           
             Device.BeginInvokeOnMainThread(() =>
             {
                 App.CurrentPosition = e.Position;
-
+                Console.WriteLine(e.Position.Latitude + ", " + e.Position.Longitude);
                 if (SemanticLink.TargetSemanticLinks == null)
                 {
                     if (Coordinate.TommyHome.LatitudeStart < e.Position.Latitude
