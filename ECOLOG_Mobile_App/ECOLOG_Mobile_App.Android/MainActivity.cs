@@ -10,7 +10,7 @@ namespace ECOLOG_Mobile_App.Droid
                 Icon = "@mipmap/ic_launcher", 
                 Theme = "@style/MainTheme", 
                 MainLauncher = true, 
-                ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Landscape)]
+                ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.SensorLandscape)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
