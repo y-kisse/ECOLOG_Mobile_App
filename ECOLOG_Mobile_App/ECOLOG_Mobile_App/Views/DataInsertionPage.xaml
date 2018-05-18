@@ -8,15 +8,20 @@
     <StackLayout VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Vertical">
-        <Button Text="Insert Altitude Data" />
+        <Button Text="Insert Altitude Data" Command="{Binding InsertAltitudeDetumCommand}"/>
 
-        <Button Text="Insert GraphData" />
+        <Button Text="Insert GraphData" Command="{Binding InsertGraphDatumCommand}"/>
 
-        <Button Text="Insert Efficiency Data" />
+        <Button Text="Insert Efficiency Data" Command="{Binding InsertSemanticLinkCommand}"/>
 
-        <Button Text="Insert EfficiencyMax Data" />
+        <Button Text="Insert EfficiencyMax Data" Command="{Binding InsertEfficienctyDatumCommand}"/>
 
-        <Button Text="Insert Semantic Link Current Data" />
+        <Button Text="Insert Semantic Link Current Data" Command="{Binding InsertEfficienctyMaxDatumCommand}"/>
+
+        <Entry Text="{Binding FileName.Value, Mode=TwoWay}"/>
+
+        <Label Text="{Binding FilePath.Value}"/>
+        <Label Text="{Binding FileText.Value}"/>
 
     </StackLayout>  
 </ContentPage>
