@@ -11,7 +11,8 @@
         <Button Text="Navi to DataInsertionPage" Command="{Binding NaviToDataInsertionPageCom}"/>
         <Button Text="Navi to EnergyStackPage" Command="{Binding NaviToEnergyStackPageCom}"/>
         <Button Text="Navi to ECGsPage" Command="{Binding NaviToECGsPageCom}"/>
-        <Button Text="Navi to ResultPage" Command="{Binding NaviToResultPage}"/>
+        <Button Text="Navi to ResultPage" Command="{Binding NaviToResultPageCom}"/>
+        <Button Text="Navi to TestPlotPage" Command="{Binding NaviToTestPlotPageCom}"/>
     </StackLayout>
 
 </ContentPage>
