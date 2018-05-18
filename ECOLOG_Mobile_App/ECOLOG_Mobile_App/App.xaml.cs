@@ -44,6 +44,7 @@ namespace ECOLOG_Mobile_App
             containerRegistry.RegisterForNavigation<ResultPage>();
             containerRegistry.RegisterForNavigation<MapPage>();
             containerRegistry.RegisterForNavigation<ECGsDemoPage>();
+            containerRegistry.RegisterForNavigation<TestPlotPage>();
         }
     }
 }
