@@ -6,7 +6,11 @@ using Prism.Ioc;
 
 namespace ECOLOG_Mobile_App.Droid
 {
-    [Activity(Label = "ECOLOG_Mobile_App", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "ECOLOG_Mobile_App", 
+                Icon = "@mipmap/ic_launcher", 
+                Theme = "@style/MainTheme", 
+                MainLauncher = true, 
+                ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Landscape)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
