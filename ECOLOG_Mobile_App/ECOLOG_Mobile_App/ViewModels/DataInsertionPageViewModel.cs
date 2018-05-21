@@ -33,6 +33,11 @@ namespace ECOLOG_Mobile_App.ViewModels
         public DelegateCommand InsertEfficienctyDatumCommand { get; set; }
         public DelegateCommand InsertEfficienctyMaxDatumCommand { get; set; }
         public DelegateCommand InsertSemanticLinkCommand { get; set; }
+        public DelegateCommand PreviewAltitudeDatumCommand { get; set; }
+        public DelegateCommand PreviewGraphDatumCommand { get; set; }
+        public DelegateCommand PreviewEfficiencyCommand { get; set; }
+        public DelegateCommand PreviewEfficiencyMaxDatumCommand { get; set; }
+        public DelegateCommand PreviewSemanticLinkCommand { get; set; }
         public ReactiveProperty<string> FileName { get; set; }
         public ReactiveProperty<string> FilePath { get; set; }
         public ReactiveProperty<string> FileText { get; set; }
@@ -73,6 +78,30 @@ namespace ECOLOG_Mobile_App.ViewModels
             {
                 await CheckPermissionAsync();
                 await InsertDataAsync(DataClass.EfficiencyMax);
+            });
+
+            PreviewAltitudeDatumCommand = new DelegateCommand(async () =>
+            {
+                await CheckPermissionAsync();
+                await PreviewDataAsync(DataClass.AltitudeDarum);
+            });
+
+            PreviewGraphDatumCommand = new DelegateCommand(async () =>
+            {
+                await CheckPermissionAsync();
+                await PreviewDataAsync(DataClass.GraphDatum);
+            });
+
+            PreviewEfficiencyCommand = new DelegateCommand(async () =>
+            {
+                await CheckPermissionAsync();
+                await PreviewDataAsync(DataClass.Efficiency);
+            });
+
+            PreviewEfficiencyMaxDatumCommand = new DelegateCommand(async () =>
+            {
+                await CheckPermissionAsync();
+                await PreviewDataAsync(DataClass.EfficiencyMax);
             });
         }
 
@@ -164,6 +193,95 @@ namespace ECOLOG_Mobile_App.ViewModels
                 }
             }
             FileText.Value = "Finish!!";
+        }
+
+        private async Task PreviewDataAsync(DataClass dataClass)
+        {
+            var rootFolder = await FileSystem.Current.GetFolderFromPathAsync(RootFolderPath);
+            IFile file;
+            #region 保存先ファイル名を指定する
+            switch (dataClass)
+            {
+                case DataClass.AltitudeDarum:
+                    file = await rootFolder.CreateFileAsync("Preview_Altitude.csv", CreationCollisionOption.ReplaceExisting);
+                    break;
+                case DataClass.GraphDatum:
+                    file = await rootFolder.CreateFileAsync("Preview_GraphDatum.csv", CreationCollisionOption.ReplaceExisting);
+                    break;
+                case DataClass.Efficiency:
+                    file = await rootFolder.CreateFileAsync("Preview_Efficiency.csv", CreationCollisionOption.ReplaceExisting);
+                    break;
+                case DataClass.EfficiencyMax:
+                    file = await rootFolder.CreateFileAsync("Preview_EfficiencyMax.csv", CreationCollisionOption.ReplaceExisting);
+                    break;
+                default:
+                    file = await rootFolder.CreateFileAsync("Preview_something.csv", CreationCollisionOption.ReplaceExisting);
+                    break;
+            }
+            #endregion
+
+            using (var writer = new StreamWriter(await file.OpenAsync(PCLStorage.FileAccess.ReadAndWrite)))
+            {
+                using (var realm = Realm.GetInstance())
+                {
+                    writer.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                    switch (dataClass)
+                    {
+                        case DataClass.AltitudeDarum:
+                            var altitudeData = realm.All<AltitudeDatum>();
+                            writer.WriteLine("LowerLatitude, LowerLongitude, UpperLatitude, UpperLongitude, Altitude");
+                            foreach(var item in altitudeData)
+                            {
+                                writer.WriteLine(item.LowerLatitude + ","
+                                                        + item.LowerLongitude + ","
+                                                        + item.UpperLatitude + ","
+                                                        + item.UpperLongitude + ","
+                                                        + item.Altitude);
+                            }
+                            break;
+                        case DataClass.GraphDatum:
+                            var graphData = realm.All<GraphDatum>();
+                            writer.WriteLine("SemanticLinkId, TripId, Date, TransitTime, ConsumedElectricEnergy, LostEnergy, RegeneLoss, ConvertLoss, RollingResistance, AirResistance");
+                            foreach (var item in graphData)
+                            {
+                                writer.WriteLine(item.SemanticLinkId + ","
+                                                        + item.TripId + ","
+                                                        + item.Date + ","
+                                                        + item.TransitTime + ","
+                                                        + item.ConsumedElectricEnergy + ","
+                                                        + item.LostEnergy + ","
+                                                        + item.RegeneLoss + ","
+                                                        + item.ConvertLoss + ","
+                                                        + item.RollingResistance + ","
+                                                        + item.AirResistance + ",");
+                            }
+                            break;
+                        case DataClass.Efficiency:
+                            var efficiencyData = realm.All<EfficiencyDatum>();
+                            writer.WriteLine("Torque, Rev, Efficiency");
+                            foreach (var item in efficiencyData)
+                            {
+                                writer.WriteLine(item.Torque + ","
+                                                        + item.Rev + ","
+                                                        + item.Efficiency);
+                            }
+                            break;
+                        case DataClass.EfficiencyMax:
+                            var efficiencyMaxData = realm.All<EfficiencyMaxDatum>();
+                            writer.WriteLine("Torque, Rev, Efficiency");
+                            foreach (var item in efficiencyMaxData)
+                            {
+                                writer.WriteLine(item.Torque + ","
+                                                        + item.Rev + ","
+                                                        + item.Efficiency);
+                            }
+                            break;
+                        default:
+                            
+                            break;
+                    }
+                }
+            }
         }
     }
 }

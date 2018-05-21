@@ -4,24 +4,47 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="ECOLOG_Mobile_App.Views.DataInsertionPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Column="0"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Vertical">
+            <Button Text="Insert Altitude Data" Command="{Binding InsertAltitudeDetumCommand}"/>
 
-    <StackLayout VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Orientation="Vertical">
-        <Button Text="Insert Altitude Data" Command="{Binding InsertAltitudeDetumCommand}"/>
+            <Button Text="Insert GraphData" Command="{Binding InsertGraphDatumCommand}"/>
 
-        <Button Text="Insert GraphData" Command="{Binding InsertGraphDatumCommand}"/>
+            <Button Text="Insert Efficiency Data" Command="{Binding InsertSemanticLinkCommand}"/>
 
-        <Button Text="Insert Efficiency Data" Command="{Binding InsertSemanticLinkCommand}"/>
+            <Button Text="Insert EfficiencyMax Data" Command="{Binding InsertEfficienctyDatumCommand}"/>
 
-        <Button Text="Insert EfficiencyMax Data" Command="{Binding InsertEfficienctyDatumCommand}"/>
+            <Button Text="Insert Semantic Link Current Data" Command="{Binding InsertEfficienctyMaxDatumCommand}"/>
 
-        <Button Text="Insert Semantic Link Current Data" Command="{Binding InsertEfficienctyMaxDatumCommand}"/>
+            <Entry Text="{Binding FileName.Value, Mode=TwoWay}"/>
 
-        <Entry Text="{Binding FileName.Value, Mode=TwoWay}"/>
+            <Label Text="{Binding FilePath.Value}"/>
+            <Label Text="{Binding FileText.Value}"/>
 
-        <Label Text="{Binding FilePath.Value}"/>
-        <Label Text="{Binding FileText.Value}"/>
+        </StackLayout>
+        <StackLayout Grid.Column="1"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Vertical">
+            <Button Text="Preview Altitude Data" Command="{Binding PreviewAltitudeDatumCommand}"/>
 
-    </StackLayout>  
+            <Button Text="Preview Graph Data" Command="{Binding PreviewGraphDatumCommand}"/>
+
+            <Button Text="Preview Effieciency Data" Command="{Binding PreviewEfficiencyCommand}"/>
+        </StackLayout>
+        <StackLayout Grid.Column="2"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Vertical">
+            
+        </StackLayout>
+    </Grid>
 </ContentPage>
