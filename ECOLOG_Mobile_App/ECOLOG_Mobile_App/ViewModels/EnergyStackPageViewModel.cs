@@ -93,6 +93,7 @@ namespace ECOLOG_Mobile_App.ViewModels
                 Console.WriteLine(e.Position.Latitude + ", " + e.Position.Longitude);
                 if (SemanticLink.TargetSemanticLinks == null)
                 {
+                    // HomeWardかOutWardかを決定
                     if (Coordinate.TommyHome.LatitudeStart < e.Position.Latitude
                         && Coordinate.TommyHome.LatitudeEnd > e.Position.Latitude
                         && Coordinate.TommyHome.LongitudeStart < e.Position.Longitude
@@ -114,8 +115,10 @@ namespace ECOLOG_Mobile_App.ViewModels
                 }
                 else
                 {
+                    // HomeWardかOutWardか決定されている
                     if (SemanticLinkCurrent == null)
                     {
+                        // 最初のセマンティックリンクを決定
                         SemanticLinkCurrent = SemanticLink.TargetSemanticLinks
                             .FirstOrDefault(v => e.Position.Latitude > v.MinLatitude
                                                  && e.Position.Latitude < v.MaxLatitude
@@ -129,6 +132,8 @@ namespace ECOLOG_Mobile_App.ViewModels
                             || e.Position.Longitude < SemanticLinkCurrent.MinLongitude
                             || e.Position.Longitude > SemanticLinkCurrent.MaxLongitude)
                         {
+                            // セマンティックリンクの変更を検知
+                            // ChoraleとEnergyStackModelの描画を開始
                             ChoraleModel = ChoraleModel.CreateChoraleModel(SemanticLinkCurrent);
                             EnergyStackModelList =
                                 EnergyStackModel.CreateEnergyStackSource(Calculator.GetGraphDatum(), SemanticLinkCurrent);
