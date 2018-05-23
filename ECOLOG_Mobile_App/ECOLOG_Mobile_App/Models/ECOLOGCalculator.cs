@@ -46,11 +46,16 @@ namespace ECOLOG_Mobile_App.Models
         {
             return new GraphDatum
             {
+                TripId = -1,
+                Date = new DateTimeOffset(DateTime.Now),
+                LostEnergy = (float)LostEnergyList.Sum(),
                 ConvertLoss = (float)ConvertLossList.Sum(),
                 AirResistance = (float)AirResistanceList.Sum(),
                 RollingResistance = (float)RollingResistanceList.Sum(),
-                RegeneLoss = (float)RegeneLossList.Sum()
-            };
+                RegeneLoss = (float)RegeneLossList.Sum(),
+                TransitTime  = (int)(PositionCollection.Last().Timestamp -
+                                            PositionCollection.First().Timestamp).TotalSeconds,
+        };
         }
 
         public static double CalcLostEnergy(IList<Position> positions)

@@ -18,5 +18,16 @@ namespace ECOLOG_Mobile_App.Models
         public float RollingResistance { get; set; }
         public float RegeneLoss { get; set; }
         public int TransitTime { get; set; }
+
+        // RealmDBに保存
+        public void saveToDB()
+        {
+
+            var realm = Realm.GetInstance();
+            realm.Write(() =>
+            {
+                realm.Add(this);
+            });
+        }
     }
 }

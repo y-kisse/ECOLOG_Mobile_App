@@ -57,6 +57,10 @@ namespace ECOLOG_Mobile_App.Models
             var rollingResistanceSigma = data.Average(v => v.RollingResistance) - data.StdDev(v => v.RollingResistance);
             var convertLossSigma = data.Average(v => v.ConvertLoss) - data.StdDev(v => v.ConvertLoss);
 
+            // DBに保存する仕組みを作成
+            datum.SemanticLinkId = semanticLink.SemanticLinkId;
+            datum.saveToDB();
+
             return new List<EnergyStackModel>
             {
                 new EnergyStackModel
